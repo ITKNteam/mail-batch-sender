@@ -1,0 +1,18 @@
+AddDefaultCharset utf-8
+AddType text/x-component .htc
+
+RewriteEngine on
+
+# RewriteCond %{HTTP_HOST} ^www\.(.*) [NC]
+# RewriteRule ^(.*)$ http://%1/$1 [R=301,L]
+
+# если директория или файл существуют, использовать их напрямую
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+# иначе отправлять запрос на файл index.php
+RewriteRule . index.php
+
+#AliasMatch ^/uploads(.*) ../../uploads/
+
+# RewriteCond %{HTTP_HOST} ^www\.(.*) [NC]
+# RewriteRule (.*) http://p.a.ru/$1 [R=301,L]
